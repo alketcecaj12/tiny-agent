@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tinyagent"
+version = "0.1.0"
+description = "A TinyAgent built from scratch in plain Python, ported from the notebooks of 'An Illustrated Guide to AI Agents'."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+rich = ["rich>=13.0"]
+mcp = ["mcp>=1.26.0"]
+dev = ["pytest>=8.0"]
+all = ["tinyagent[rich,mcp,dev]"]
+
+[project.scripts]
+tinyagent = "tinyagent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tinyagent = ["skills/*/SKILL.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
